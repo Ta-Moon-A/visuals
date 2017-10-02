@@ -1,0 +1,496 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+</style>
+<body>
+
+<h2 style="text-align:center">D3.js Projects</h2>
+
+<div class="row">
+  <div class="column">
+    <img src="visuals/public/1.gif" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/12.gif" style="width:100%" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
+  </div>
+  
+  <div class="column">
+    <img src="visuals/public/4.gif" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/3.gif" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+
+    <img src="visuals/public/5.gif" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/7.gif" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/6.gif" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/9.gif" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/10.gif" style="width:100%" onclick="openModal();currentSlide(10)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/11.gif" style="width:100%" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
+  </div>
+  <div class="column">
+    <img src="visuals/public/2.gif" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+ 
+    <img src="visuals/public/8.gif" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+  </div>
+
+  <div class="column">
+    <img src="visuals/public/13.gif" style="width:100%" onclick="openModal();currentSlide(13)" class="hover-shadow cursor">
+  </div>
+ 
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 100</div>
+      <img src="visuals/public/1.gif" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 100</div>
+      <img src="visuals/public/2.gif" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 100</div>
+      <img src="visuals/public/3.gif" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+      <div class="numbertext">4 / 100</div>
+      <img src="visuals/public/4.gif" style="width:100%">
+    </div>
+    
+    <div class="mySlides">
+        <div class="numbertext">5 /100</div>
+        <img src="visuals/public/5.gif" style="width:100%">
+      </div>
+    
+      <div class="mySlides">
+        <div class="numbertext">6 / 100</div>
+        <img src="visuals/public/6.gif" style="width:100%">
+      </div>
+    
+      <div class="mySlides">
+        <div class="numbertext">7 / 100</div>
+        <img src="visuals/public/7.gif" style="width:100%">
+      </div>
+    
+      <div class="mySlides">
+        <div class="numbertext">8 / 100</div>
+        <img src="visuals/public/8.gif" style="width:100%">
+      </div>
+    
+      <div class="mySlides">
+        <div class="numbertext">9 / 100</div>
+        <img src="visuals/public/9.gif" style="width:100%">
+      </div>
+    
+      <div class="mySlides">
+        <div class="numbertext">10 / 100</div>
+        <img src="visuals/public/10.gif" style="width:100%">
+      </div>
+      <div class="mySlides">
+        <div class="numbertext">11 / 100</div>
+        <img src="visuals/public/11.gif" style="width:100%">
+      </div>
+      <div class="mySlides">
+        <div class="numbertext">12 / 100</div>
+        <img src="visuals/public/12.gif" style="width:100%">
+      </div>
+      <div class="mySlides">
+        <div class="numbertext">13 / 100</div>
+        <img src="visuals/public/13.gif" style="width:100%">
+      </div>
+      
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    <div class="column">
+      <img class="demo cursor" src="visuals/public/1.gif" style="width:100%" onclick="currentSlide(1)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/2.gif" style="width:100%" onclick="currentSlide(2)">
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/3.gif" style="width:100%" onclick="currentSlide(3)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/4.gif" style="width:100%" onclick="currentSlide(4)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/5.gif" style="width:100%" onclick="currentSlide(5)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/6.gif" style="width:100%" onclick="currentSlide(6)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/7.gif" style="width:100%" onclick="currentSlide(7)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/8.gif" style="width:100%" onclick="currentSlide(8)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/9.gif" style="width:100%" onclick="currentSlide(9)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/10.gif" style="width:100%" onclick="currentSlide(10)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/11.gif" style="width:100%" onclick="currentSlide(11)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/12.gif" style="width:100%" onclick="currentSlide(12)" >
+    </div>
+    <div class="column">
+        <img class="demo cursor" src="visuals/public/13.gif" style="width:100%" onclick="currentSlide(13)" >
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>
+=======
+<html>
+
+<head>
+    <script src="scripts/masonry.pkgd.min.js"></script>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <style>
+        .grid {
+            margin: 0 auto
+        }
+
+        body{
+            padding:300px;;
+        }
+
+        .grid-item {
+            /*display: inline-block;*/
+            margin: 5px;
+        }
+
+        grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .grid-item {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            cursor: pointer;
+        }
+
+        .grid-item:hover {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+
+            -webkit-transform: scale(5);
+            /* Safari and Chrome */
+            -moz-transform: scale(5);
+            /* Firefox */
+            -ms-transform: scale(5);
+            /* IE 9 */
+            -o-transform: scale(5);
+            /* Opera */
+            transform: scale(5);
+            z-index: 9999;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      
+      
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="grid" data-masonry-options='{ "isFitWidth": true }'></div>
+
+
+    <script>
+        var count = 100;
+        var inc = 0;
+
+        function order() {
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry(grid, {
+                // options...
+                itemSelector: '.grid-item',
+                columnWidth: 200
+            });
+
+            // init with selector
+            var msnry = new Masonry('.grid', {
+                isFitWidth: true
+            });
+
+        }
+
+        function loadImage(url) {
+            try {
+                console.log(url)
+                var tester = new Image();
+                tester.onload = imageFound.bind(this, url);
+                tester.src = url; F
+            } catch (err) {
+                inc++;
+                checkInc();
+                imageNotFound();
+            }
+
+
+        }
+
+
+        function checkInc() {
+            console.log(inc);
+        }
+
+
+        function imageFound(url, evt) {
+            inc++;
+            checkInc();
+            $(".grid").append("<div class='grid-item'><img src=" + url + " onLoad='makeOrder()'/><div>");
+
+        }
+
+        function imageNotFound() {
+            console.log('image not found')
+        }
+
+
+        $(document).ready(f => {
+
+
+            var dir = "visuals/";
+            for (var i = 1; i < count + 1; i++) {
+                loadImage("visuals/public/" + i + ".gif")
+                //   $(".grid").append("<div class='grid-item'><img src='visuals/" + i + ".gif' onLoad='makeOrder()'/><div>");
+            }
+
+        })
+    </script>
+    <script>
+        function makeOrder() {
+            $(".grid-item").each(function () {
+                var image = $(this).find('img');
+                var width = image.get(0).naturalWidth < 920 ? image.get(0).naturalWidth : 920;
+                width=width/6;
+                // var width = image.get(0).naturalWidth < 480 ? image.get(0).naturalWidth : 480;
+                image.css('width', width)
+                $(this).css('width', width)
+            })
+
+            order();
+        }
+
+
+        setInterval(f => {
+            order();
+            console.clear()
+        }, 1000)
+    </script>
+</body>
+
+</html>
+>>>>>>> 0ea422ab9c20fe8547512f9fc512ff7ee8f72bb5

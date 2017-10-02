@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <script src="scripts/masonry.pkgd.min.js"></script>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <style>
+        .grid {
+            margin: 0 auto
+        }
+
+        body{
+            padding:300px;;
+        }
+
+        .grid-item {
+            /*display: inline-block;*/
+            margin: 5px;
+        }
+
+        grid:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .grid-item {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            cursor: pointer;
+        }
+
+        .grid-item:hover {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+
+            -webkit-transform: scale(5);
+            /* Safari and Chrome */
+            -moz-transform: scale(5);
+            /* Firefox */
+            -ms-transform: scale(5);
+            /* IE 9 */
+            -o-transform: scale(5);
+            /* Opera */
+            transform: scale(5);
+            z-index: 9999;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      
+      
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="grid" data-masonry-options='{ "isFitWidth": true }'></div>
+
+
+    <script>
+        var count = 100;
+        var inc = 0;
+
+        function order() {
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry(grid, {
+                // options...
+                itemSelector: '.grid-item',
+                columnWidth: 200
+            });
+
+            // init with selector
+            var msnry = new Masonry('.grid', {
+                isFitWidth: true
+            });
+
+        }
+
+        function loadImage(url) {
+            try {
+                console.log(url)
+                var tester = new Image();
+                tester.onload = imageFound.bind(this, url);
+                tester.src = url; F
+            } catch (err) {
+                inc++;
+                checkInc();
+                imageNotFound();
+            }
+
+
+        }
+
+
+        function checkInc() {
+            console.log(inc);
+        }
+
+
+        function imageFound(url, evt) {
+            inc++;
+            checkInc();
+            $(".grid").append("<div class='grid-item'><img src=" + url + " onLoad='makeOrder()'/><div>");
+
+        }
+
+        function imageNotFound() {
+            console.log('image not found')
+        }
+
+
+        $(document).ready(f => {
+
+
+            var dir = "visuals/";
+            for (var i = 1; i < count + 1; i++) {
+                loadImage("visuals/privated/" + i + ".gif")
+                //   $(".grid").append("<div class='grid-item'><img src='visuals/" + i + ".gif' onLoad='makeOrder()'/><div>");
+            }
+
+        })
+    </script>
+    <script>
+        function makeOrder() {
+            $(".grid-item").each(function () {
+                var image = $(this).find('img');
+                var width = image.get(0).naturalWidth < 920 ? image.get(0).naturalWidth : 920;
+                width /= 6;
+                // var width = image.get(0).naturalWidth < 480 ? image.get(0).naturalWidth : 480;
+                image.css('width', width)
+                $(this).css('width', width)
+            })
+
+            order();
+        }
+
+
+        setInterval(f => {
+            order();
+            console.clear()
+        }, 1000)
+    </script>
+</body>
+
+</html>
